@@ -1,57 +1,27 @@
 const express = require('express');
 
+const artistArray = require('./modules/artist.js');
+const songArray = require('./modules/song.js');
+const titleArray = require('./modules/title.js');
+
 const app = express();
 const PORT = 5000;
 
-const artistListArray = [
-    {
-        name: 'Miles Davis',
-        born: 1926,
-        died: 1990,
-    },
-    {
-        name: 'Duke Ellington',
-        born: 1899,
-        died: 1974,
-    },
-    {
-        name: 'John Coltrane',
-        born: 1926,
-        died: 1987,
-    },
-    {
-        name: 'Louis Daniel Armstrong',
-        born: 1901,
-        died: 1971,
-    },
-];
-
-const songListArray = [
-    {
-        title: 'Take Five',
-        artist: 'The Dave Brubeck Quartet',
-    },
-    {
-        title: 'So What',
-        artist: 'Miles Davis',
-    },
-    {
-        title: 'Sing Sing Sing',
-        artist: 'Benny Goodman',
-    },
-    {
-        title: 'Take the "A" Train',
-        artist: 'The Dave Brubeck Quartet',
-    },
-];
-
 app.use(express.static('server/public'));
 
+// creating a GET route at /artist
 app.get('/artist', (req, res) => {
-    res.send(artistListArray);
+    res.send(artistArray);
 });
 
 // TODO - Add GET for songs
+app.get('/song', (req, res) => {
+    res.send(songArray);
+});
+
+app.get('/title', (req, res) => {
+    res.send(titleArray);
+})
 
 app.listen(PORT, () => {
     console.log('listening on port', PORT)
